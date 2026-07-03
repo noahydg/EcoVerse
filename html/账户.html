@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>生态守护 - 账户</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <script src="../js/base.js"></script>
+    <script src="../js/jq.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            box-sizing: border-box;
+            padding: 20px;
+        }
+
+        #sidebar {
+            width: 35%;
+            height: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 20px;
+            box-sizing: border-box;
+        }
+
+        .logo-title-container,
+        .menu-container {
+            width: 100%;
+            background-color: lightgreen;
+            border-radius: 15px;
+            box-sizing: border-box;
+            margin-bottom: 100px;
+            transition: transform .3s ease;
+        }
+
+        .logo-title-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .menu-container {
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform .3s ease;
+        }
+
+        .menu-container:hover {
+            transform: scale(1.05);
+        }
+
+        .menu-item {
+            padding: 12px;
+            margin: 10px 0;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform .3s ease;
+            width: 80%;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .menu-item:hover {
+            background-color: darkgreen;
+            color: white;
+        }
+
+        .selected {
+            background-color: green;
+            color: white;
+        }
+
+        .logo {
+            background-color: darkgreen;
+            color: white;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            border-radius: 10px;
+            margin-top: 20px;
+            margin-bottom: 5px;
+            transition: transform .3s ease;
+        }
+
+        .logo:hover {
+            background-color: darkgreen;
+            transform: scale(1.1);
+        }
+
+        .site-title {
+            color: black;
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-family: 黑体;
+        }
+
+        #content {
+            display: flex;
+            flex-grow: 1;
+            flex-wrap: wrap;
+            background-color: white;
+            height: 100vh;
+            overflow-y: auto;
+            border-radius: 15px;
+            transition: transform 0.5s ease;
+            min-width: 0;
+        }
+
+        #account-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            min-width: 300px;
+            margin-top: 20px;
+        }
+
+        .account-info-container {
+            width: 80%;
+            background-color: lightgreen;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+        }
+
+        .account-info-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        .info-row span {
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .edit-button {
+            padding: 8px 16px;
+            background-color: green;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .action-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .action-button {
+            padding: 10px 20px;
+            background-color: darkgreen;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 80%;
+            text-align: center;
+            transition: transform .3s ease;
+        }
+
+        .action-button:hover {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lodding-wrap">
+        <div class="loadding-div"></div>
+      </div>
+    <div id="sidebar">
+        <div class="logo-title-container">
+            <div class="logo" onclick="navigateTo('首页.html')"><img src="../img/logo.jpg" style="width:80px; border-radius: 10px;"></div>
+            <div class="site-title">生态守护<br>Ecoverse</div>
+        </div>
+        <div class="menu-container">
+            <div class="menu-item" onclick="navigateTo('生态.html')">生态</div>
+            <div class="menu-item" onclick="navigateTo('发现.html')">发现</div>
+            <div class="menu-item" onclick="navigateTo('商城.html')">商城</div>
+            <div class="menu-item selected" onclick="navigateTo('账户.html')">账户</div>
+        </div>
+    </div>
+    <div id="content">
+        <div id="account-page">
+            <div class="account-info-container">
+                <h2>账户信息</h2>
+                <div class="info-row">
+                    <span>用户名：</span>
+                    <span id="username">生态守护者</span>
+                </div>
+                <div class="info-row">
+                    <span>电子邮件：</span>
+                    <span id="email">user@example.com</span>
+                </div>
+                <div class="info-row">
+                    <span>会员等级：</span>
+                    <span id="membership">普通会员</span>
+                </div>
+                <div class="info-row">
+                    <button class="edit-button" onclick="editAccount()">编辑信息</button>
+                </div>
+            </div>
+            <div class="action-container">
+                <button class="action-button" onclick="navigateTo('订单.html')">我的订单</button>
+                <button class="action-button" onclick="navigateTo('环保项目.html')">我支持的项目</button>
+                <button class="action-button" onclick="navigateTo('积分.html')">我的积分</button>
+                <button class="action-button" onclick="logout()">退出登录</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function navigateTo(page) {
+            window.location.href = page;
+        }
+
+        function editAccount() {
+            alert("进入账户编辑页面");
+        }
+
+        function logout() {
+            navigateTo('../登录.html');
+        }
+    </script>
+</body>
+
+</html>

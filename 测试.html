@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .card {
+      width: calc(25% - 10px);
+      border-radius: 15px;
+      overflow: hidden;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      transition: transform .3s ease;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      width: 100%;
+    }
+    .section {
+            width: 50%;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 15px;
+            background-color: #f5f5f5;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        #discovery-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            min-width: 300px;
+            margin-top: 20px;
+        }
+        .card img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            .top-title-container {
+            position: sticky;
+            top: 0; /* 固定在距离顶部0px的位置 */
+            width: 100%;
+            background-color: #fff; /* 可选：设置背景色以确保文字清晰可见 */
+            z-index: 1000; /* 确保标题在其他内容之上 */
+            text-align: center; /* 可选：居中显示标题 */
+            padding: 10px 0; /* 可选：添加内边距以增加可读性 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 可选：添加阴影以增加层次感 */
+        }
+ }
+ /* 背包容器样式 */
+.backpack-container {
+  width: 300px;
+  height: 500px;
+  background-color: #d3d3d3; /* 偏灰的背景色 */
+  border: 1px solid #aaa;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 关闭按钮样式 */
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* 背包内容布局 */
+.backpack-content {
+  display: flex;
+  height: 100%;
+  position:fixed;
+}
+
+/* 左侧背包区样式 */
+.backpack-grid {
+  width: 70%; /* 比右边稍宽 */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px; /* 方格之间的间距 */
+  overflow-y: auto; /* 允许滚动 */
+  background-color: #56a366; /* 和整体背景有层次感 */
+  padding: 5px;
+  overflow-y: scroll;
+}
+
+/* 方格样式 */
+.item {
+  width: 50px;
+  height: 50px;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #8b8b8b;
+  transition: transform .3s ease;
+}
+.item:hover{
+    transform: scale(1.08);
+}
+
+/* 右侧介绍区样式 */
+.item-info {
+  width: 40%; /* 比左边稍窄 */
+  padding: 5px;
+  background-color: #e0e0e0; /* 与左侧区分 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* 物品图片 */
+.item-preview {
+  width: 80%;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+/* 物品描述 */
+.item-description {
+  font-size: 12px;
+  text-align: center;
+  margin-top: px;
+}
+    </style>
+</head>
+<body>
+    <div class="backpack-container">
+        <button class="close-button">X</button>
+        <div class="backpack-content">
+          <!-- 左侧背包区 -->
+          <div class="backpack-grid">
+            <div class="item" style="background-image: url(./img/植物图鉴/守护积分.jpg); background-size: cover;"></div>
+            <div class="item" style="background-image: url(./img/AI助手.jpg);background-size: cover;"></div>
+            <div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div>
+            <div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div>
+            <div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div>
+          </div>
+          <!-- 右侧介绍区 -->
+          <div class="item-info">
+            <img src="./img/植物图鉴/守护积分.jpg" class="item-preview">
+            <p class="item-description"><h2>守护积分</h2></p >
+          </div>
+        </div>
+    </div>
+    <div id="information-input-bar">
+        <img src="#" alt="示例图片" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; object-fit: cover; z-index: -1;">
+        <button style="float:left; width:auto; margin:10px; margin-left:30px; border:1.5px dashed black; border-radius: 15%; padding:5px;">今日足迹</button>
+        <button id="input-data" style="float:left; width:auto; margin:10px; border:1.5px dashed black; border-radius: 15%; padding:5px;">导入</button>
+        <button style="float:left; width:50px; margin:10px; border:1.5px solid rgb(249, 60, 27); border-radius: 15%; padding:5px; text-align: center;">日历</button>
+        <div style="clear: both;"></div>
+        <div class="stats-div">总里程(步行/跑步): <div class="data-input" id="total-distance">0</div> KM</div>
+        <div class="stats-div">捡垃圾数(拍照上传): <div class="data-input" id="trash-count">0</div> 个</div>
+        <div class="convert-div">
+          <span>可转化守护积分：<span id="convert-points">0</span></span>
+          <button id="convert-success-btn" style="background-color: lightblue; border-radius: 5px; padding: 5px;">一键转化至背包</button>
+        </div>
+      </div>
+      
+      <!-- 输入窗口 -->
+      <div class="input-popup" id="input-popup">
+        <label for="input-distance">今日里程：</label>
+        <input type="number" id="input-distance" placeholder="输入里程数">
+        <label for="input-trash">捡垃圾数：</label>
+        <input type="number" id="input-trash" placeholder="输入捡垃圾数">
+        <button id="confirm-data-btn">确定</button>
+        <button id="cancel-data-btn">取消</button>
+      </div>
+      
+      <style>
+        .input-popup {
+          display: none;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: white;
+          border: 1px solid gray;
+          border-radius: 10px;
+          padding: 20px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+          z-index: 1000;
+        }
+      
+        .input-popup input {
+          width: 100%;
+          margin-bottom: 10px;
+          padding: 5px;
+          border: 1px solid gray;
+          border-radius: 5px;
+        }
+      
+        .input-popup button {
+          background-color: lightblue;
+          border-radius: 5px;
+          padding: 5px 10px;
+          cursor: pointer;
+          margin: 5px;
+        }
+      
+        .stats-div {
+          margin-left: 30px;
+          margin-top: 10px;
+          margin-bottom: 5px;
+        }
+      
+        .convert-div {
+          margin-top: 10px;
+          margin-left: 30px;
+        }
+      </style>
+      
+      <script>
+        // 定义背包变量
+        let Ecoverse = {};
+      
+        // 打开输入窗口
+        document.getElementById('input-data').addEventListener('click', function () {
+          document.getElementById('input-popup').style.display = 'block';
+        });
+      
+        // 确定按钮逻辑
+        document.getElementById('confirm-data-btn').addEventListener('click', function () {
+          const distance = parseFloat(document.getElementById('input-distance').value) || 0;
+          const trash = parseFloat(document.getElementById('input-trash').value) || 0;
+      
+          // 更新里程和捡垃圾数
+          document.getElementById('total-distance').textContent = distance.toFixed(2);
+          document.getElementById('trash-count').textContent = trash;
+      
+          // 计算可转化积分
+          const points = (distance * 0.5 + trash * 0.5).toFixed(2);
+          document.getElementById('convert-points').textContent = points;
+      
+          // 关闭窗口
+          document.getElementById('input-popup').style.display = 'none';
+        });
+      
+        // 取消按钮逻辑
+        document.getElementById('cancel-data-btn').addEventListener('click', function () {
+          document.getElementById('input-popup').style.display = 'none';
+        });
+      
+        // 转化至背包逻辑
+        document.getElementById('convert-success-btn').addEventListener('click', function () {
+          const points = parseFloat(document.getElementById('convert-points').textContent);
+          Ecoverse.points = points;
+      
+          alert(`成功转化 ${points} 积分至背包！`);
+          console.log('Ecoverse:', Ecoverse);
+        });
+      </script>
+    <div id="discovery-page">
+        <div class="section">
+        <h3>春天</h3>
+            <div class="card-container">
+              <div class="card">
+                  <img src="./img/背景选择/草原.png" alt="草原">
+                  <button class=“background-option”>草原 使用</button>
+              </div>
+              <div class="card">
+                  <img src="./img/背景选择/公园.jpg" alt="公园">
+                  <button class=“background-option”>公园 使用</button>
+              </div>
+              <div class="card">
+                  <img src="./img/背景选择/佛系生活.jpg" alt="佛系生活">
+                  <button class=“background-option”>佛系生活 使用</button>
+              </div>
+              <div class="card">
+                  <img src="./img/背景大图2.jpg" alt="山水">
+                  <button class=“background-option”>山水 使用</button>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="discovery-page">
+        <div class="section">
+        <h3>夏天</h3>
+            <div class="card-container">
+              <div class="card">
+                  <img src="./img/背景选择/海滩.jpg" alt="海滩">
+                  <button class=“background-option”>海滩 使用</button>
+              </div>
+              <div class="card">
+                  <img src="./img/背景选择/丁达尔.jpg" alt="丁达尔">
+                  <button class=“background-option”>丁达尔 使用</button>
+              </div>
+              <div class="card">
+                  <img src="#" alt="更多">
+                  <button class=“background-option”>暂无</button>
+              </div>
+              <div class="card">
+                  <img src="#" alt="更多">
+                  <button class=“background-option”>暂无</button>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="discovery-page">
+        <div class="section">
+        <h3>秋天</h3>
+            <div class="card-container">
+              <div class="card">
+                  <img src="./img/背景选择/麦田.jpg" alt="麦田">
+                  <button class=“background-option”>麦田 使用</button>
+              </div>
+              <div class="card">
+                  <img src="./img/背景选择/公路.jpg" alt="公路">
+                  <button class=“background-option”>公路 使用</button>
+              </div>
+              <div class="card">
+                  <img src="./img/背景选择/卡通山.jpg" alt="卡通">
+                  <button class=“background-option”>卡通 使用</button>
+              </div>
+              <div class="card">
+                  <img src="./img/背景选择/余晖.png" alt="余晖">
+                  <button class=“background-option”>余晖 使用</button>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="discovery-page">
+        <div class="section">
+        <h3>冬天</h3>
+            <div class="card-container">
+              <div class="card">
+                  <img src="./img/背景选择/雪地.jpg" alt="雪地">
+                  <button class=“background-option”>雪地 使用</button>
+              </div>
+              <div class="card">
+                  <img src="./img/背景选择/雪山飞狐.jpg" alt="雪山">
+                  <button class=“background-option”>雪山 使用</button>
+              </div>
+              <div class="card">
+                  <img src="#" alt="更多">
+                  <button class=“background-option”>暂无</button>
+              </div>
+              <div class="card">
+                  <img src="#" alt="更多">
+                  <button class=“background-option”>暂无</button>
+              </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

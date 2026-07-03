@@ -1,0 +1,87 @@
+/* 背景更换页面 */
+
+  .background-option {
+      display: inline-block;
+      height: 25px;
+      line-height: 5px;
+      padding: 0px 25px 0 20px;
+      border: 2px solid white;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: transform .3s ease;
+      color: #fcfefe;
+  }
+  .background-option:hover{
+    transform:scale(1.1);
+    color:#d38def;
+  }
+  
+  .background-option[data-bg="bg1"] { background-image: url('../img/背景选择/公园.jpg'); }
+  .background-option[data-bg="bg2"] { background-image: url('../img/背景选择/佛系生活.jpg'); }
+  .background-option[data-bg="bg3"] { background-image: url('../img/背景大图2.jpg'); }
+  .background-option[data-bg="bg4"] { background-image: url('../img/背景选择/海滩.jpg'); }
+  .background-option[data-bg="bg5"] { background-image: url('../img/背景选择/丁达尔.jpg'); }
+  .background-option[data-bg="bg6"] { background-image: url('../img/背景选择/麦田.jpg'); }
+  .background-option[data-bg="bg7"] { background-image: url('../img/背景选择/公路.jpg'); }
+  .background-option[data-bg="bg8"] { background-image: url('../img/背景选择/卡通山.jpg'); }
+  .background-option[data-bg="bg9"] { background-image: url('../img/背景选择/雪地.jpg'); }
+  .background-option[data-bg="default-bg"] { background-image: url('../img/背景选择/草原.png'); }
+
+  #plant-bar.default-bg {
+    background-image: url('../img/背景选择/草原.png');
+  }
+  #plant-bar.bg1 {
+    background-image: url('../img/背景选择/公园.jpg');
+  }
+  #plant-bar.bg2 {
+    background-image: url('../img/背景选择/佛系生活.jpg');
+  }
+  #plant-bar.bg3 {
+    background-image: url('../img/背景大图2.jpg');
+  }
+  #plant-bar.bg4 {
+    background-image: url('../img/背景选择/海滩.jpg');
+     background-position: center -500px;
+     background-size: cover;
+  }
+  #plant-bar.bg5 {
+    background-image: url('../img/背景选择/丁达尔.jpg');
+  }
+  #plant-bar.bg6 {
+    background-image: url('../img/背景选择/麦田.jpg');
+  }
+  #plant-bar.bg7 {
+    background-image: url('../img/背景选择/公路.jpg');
+  }
+  #plant-bar.bg8 {
+    background-image: url('../img/背景选择/卡通山.jpg');
+  }
+  #plant-bar.bg9 {
+    background-image: url('../img/背景选择/雪地.jpg');
+    background-position: center -250px;
+  }
+
+  
+  .plant-option[data-bg="pt1"] { background-image: url('../img/植物图鉴/桃花树.png'); }
+  .plant-option[data-bg="pt2"] { background-image: url('../img/植物图鉴/盆栽树1.png'); }
+  .plant-option[data-bg="pt3"] { background-image: url('../img/植物图鉴/碳碳树3级1.png'); }
+  .plant-option[data-bg="pt4"] { background-image: url('../img/植物图鉴/黑树1.png'); }
+  .plant-option[data-bg="default-pt"] { background-image: url('../img/植物图鉴/碳碳树.png'); }
+
+  #plant-div.default-pt {
+    background-image: url('../img/植物图鉴/碳碳树.png');
+  }
+  #plant-div.pt1 {
+    background-image: url('../img/植物图鉴/桃花树.png');
+  }
+  #plant-div.pt2 {
+    background-image: url('../img/植物图鉴/盆栽树1.png');
+  }
+  #plant-div.pt3 {
+    background-image: url('../img/植物图鉴/碳碳树3级1.png');
+  }
+  #plant-div.pt4 {
+    background-image: url('../img/植物图鉴/黑树1.png');
+  }
+  
+ 

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>生态守护 - 生态</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/background.css">
+
+  <script src="../js/jq.js"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      box-sizing: border-box;
+      padding: 20px;
+    }
+
+    #sidebar {
+      width: 35%;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-right: 20px;
+      box-sizing: border-box;
+    }
+
+    .logo-title-container,
+    .menu-container {
+      width: 100%;
+      background-color: lightgreen;
+      border-radius: 15px;
+      box-sizing: border-box;
+      margin-bottom: 100px;
+      transition: transform 0.3s;
+    }
+
+    .logo-title-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 15px;
+    }
+
+    .menu-container {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform .3s ease;
+    }
+
+    .menu-container:hover {
+      transform: scale(1.05);
+    }
+
+    .menu-item {
+      padding: 12px;
+      margin: 10px 0;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: transform .3s ease;
+      width: 80%;
+      text-align: center;
+      font-size: 20px;
+    }
+
+    .menu-item:hover {
+      background-color: darkgreen;
+      color: white;
+    }
+
+    .selected {
+      background-color: green;
+      color: white;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      border-radius: 10px;
+      margin-top: 20px;
+      margin-bottom: 5px;
+      transition: transform .3s ease;
+    }
+    .logo:hover {
+      background-color: darkgreen;
+      transform: scale(1.15);
+    }
+
+    .site-title {
+      color: black;
+      font-size: 30px;
+      font-weight: bold;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      font-family: 黑体;
+    }
+
+    #content {
+      display: flex;
+      flex-grow: 1;
+      flex-wrap: wrap;
+      background-color: white;
+      height: 100vh;
+      overflow-y: auto;
+      border-radius: 15px;
+      transition: transform 0.5s ease;
+      min-width: 0;
+    }
+
+    #homepage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      min-width: 300px;
+      margin-top: 20px;
+    }
+
+    /*  */
+    .middle-container {
+      display: flex;
+      flex-grow: 0;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 200%;
+      height: auto;
+      border: none;
+      /* 测试用 */
+      position: relative;
+    }
+
+    #plant-bar {
+      border: 1px solid grey;
+      border-radius: 15px;
+      width: 99%;
+      height: 350px;
+      margin: 0 auto;
+      position: absolute;
+      left: 50%;
+      top: 1%;
+      transform: translateX(-50%);
+      background-size: cover;
+      background-position: center 350px;
+      background-image: url('../img/背景选择/草原.png');
+    }
+   
+    .plants-div {
+      width: 150px;
+      height: 140px;
+      border: none;
+      position: absolute;
+      left: 40%;
+      top:82px;
+      background-size: cover;
+      background-image: url('../img/植物图鉴/碳碳树.png');
+    }
+
+    .plants-info {
+      width: 150px;
+      height: 50px;ß
+      border: none;
+      position: absolute;
+      top: 210px;
+      left:47%;
+      color:black;
+      font-weight: bold;
+      font-size: larger;
+    }
+    .Exp{
+      position:absolute;
+      right:5px;
+      width:100px;
+      height:7px;
+      border:1px solid goldenrod;
+      /* background-color: gold; */
+      background: linear-gradient(3deg,#fffb2a,#b7ae07,#a08a00);
+    }
+    .plants-navigation {
+      width: 90%;
+      height: 90px;
+      border: none;
+      position: absolute;
+      bottom: 10px;
+      left: 5%;
+      overflow: visible;
+    }
+
+    .sqr2 {
+       border: 2px solid #4CAF50;
+       border-radius: 15%;
+       width: 80px;
+       height: auto;
+       padding: 10px;
+       margin-top: 30px;
+       margin-left: 50px;
+      text-align: center;
+      float: left;
+      font-family: 黑体;
+      font-weight: bold;
+      font-size: 18px;
+      background: linear-gradient(135deg, #2f8e33, #62de66);
+      color: black; 
+      transition: all 0.3s ease; 
+    }
+
+    .sqr2:hover {
+      background: linear-gradient(135deg, #81c784, #66bb6a); 
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      transform: translateY(-6px); 
+    }
+
+    .sqr2:active {
+      box-shadow: none; /* 按下时去掉阴影 */
+      transform: translateY(2px); /* 按下时按钮稍微下沉 */
+    }
+
+    #information-input-bar {
+      border: 1px solid grey;
+      border-radius: 15px;
+      width: 99%;
+      height: 300px;
+      margin: 0 auto;
+      position: absolute;
+      left: 50%;
+      bottom: 5%;
+      transform: translateX(-50%);
+    }
+
+    #user-info-container {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 100px;
+      background-color: lightgreen;
+      border-radius: 15px;
+      box-sizing: border-box;
+      padding: 15px;
+    }
+
+    .avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background-color: darkgreen;
+      margin-bottom: 10px;
+    }
+
+    .username {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .logout {
+      padding: 8px 16px;
+      background-color: green;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #right-div {
+      width: 80%;
+      background-color: lightgreen;
+      height: 100%;
+      border-radius: 15px;
+      box-sizing: border-box;
+      margin-bottom: 100px;
+    }
+    .input-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      border: 1px solid gray;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+    }
+
+   .input-popup input {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 5px;
+      border: 1px solid gray;
+      border-radius: 5px;
+    }
+
+   .input-popup button {
+      background-color: lightblue;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+   .stats-div {
+      margin-left: 30px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+   .convert-div {
+      margin-top: 10px;
+      margin-left: 30px;
+    }
+    #input-data{
+      transition: transform .3s ease;
+    }
+    #input-data:hover{
+      transform: scale(1.1);
+      background: linear-gradient(135deg, #81c784, #66bb6a); 
+    }
+  </style>
+</head>
+
+<body>
+  <div class="lodding-wrap">
+    <div class="loadding-div"></div>
+  </div>
+  <div id="sidebar">
+    <div class="logo-title-container">
+      <div class="logo" onclick="navigateTo('首页.html')"><img src="../img/logo.jpg" style="width:80px; border-radius: 10px;"></div>
+      <div class="site-title">生态守护<br>Ecoverse</div>
+    </div>
+    <div class="menu-container">
+      <div class="menu-item" onclick="navigateTo('生态.html')">生态</div>
+      <div class="menu-item" onclick="navigateTo('发现.html')">发现</div>
+      <div class="menu-item" onclick="navigateTo('商城.html')">商城</div>
+      <div class="menu-item" onclick="navigateTo('账户.html')">账户</div>
+    </div>
+  </div>
+
+  <div class="middle-container">
+    <div id="plant-bar">
+      <div class="sqr1" style="margin:10px; background-color: rgb(255, 217, 0); border-color: rgb(184, 157, 3);">成就中心
+      </div>
+      <div class="plants-div" id="plant-div"></div>
+      <div class="plants-info">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;碳碳树Lv.1
+        <div class="Exp"></div>
+      </div>
+      <div class="plants-navigation">
+        <button class="sqr2" id="change-bg-btn" style="background: linear-gradient(135deg, #f586ff, #66bb6a); ">背景</button>
+        <button class="sqr2" id="backpack" style="background: linear-gradient(135deg, #896200, #ffb20c); ">背包</button>
+        <button class="sqr2" id="change-pt-btn" style="background: linear-gradient(135deg, #81c784, #66bb6a); ">图鉴</button>
+        <button class="sqr2" style="background: linear-gradient(135deg, #83e6f1, #0088aa); ">施肥</button>
+        <button class="sqr2"
+          style="border-radius: 60%; margin-left:100px; height:60px; margin-top:20px; align-content: center; background: linear-gradient(135deg, #d78f13, #7b5902); font-size: larger;border: 2px solid #854207;">
+          任务</button>
+      </div>
+    </div>
+    <div class="backpack-container" id="backpack-container">
+      <button class="close-button" id="close-button">X</button>
+      <div class="backpack-content">
+        <!-- 左侧背包区 -->
+        <div class="backpack-grid">
+          <div class="item" style="background-image: url(../img/植物图鉴/守护积分.jpg); background-size: cover;"></div>
+          <div class="item" style="background-image: url(../img/AI助手.jpg);background-size: cover;"></div>
+          <div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div>
+          <div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div>
+          <div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div><div class="item"></div>
+        </div>
+        <!-- 右侧介绍区 -->
+        <div class="item-info">
+          <img src="../img/植物图鉴/守护积分.jpg" class="item-preview">
+          <p class="item-description"><h2>守护积分</h2></p>
+        </div>
+      </div>
+  </div>
+    <script>
+      // 背景切换动画
+      window.onload = function() {
+      const plantBar = document.getElementById('plant-bar');
+      if (plantBar) {
+        plantBar.classList.remove('default-bg', 'bg1', 'bg2', 'bg3', 'bg4', 'bg5', 'bg6', 'bg7', 'bg8', 'bg9');
+        const selectedBg = localStorage.getItem('selectedBackground') || 'default-bg';
+        if (selectedBg) {
+           plantBar.classList.add(selectedBg);
+           console.log("背景切换成功:", selectedBg);
+        } else {
+         console.error("selectedBackground is empty or undefined");
+         }
+      } else {
+       console.error("找不到 plant-bar 元素");
+      };
+      console.log('plantBar classes:',plantBar.classList);
+      const plantDiv = document.getElementById('plant-div');
+      if (plantDiv) {
+        plantDiv.classList.remove('default-pt', 'pt1', 'pt2', 'bpt3', 'bt4');
+        const selectedPt = localStorage.getItem('selectedPlant') || 'default-pt';
+        if (selectedPt) {
+           plantDiv.classList.add(selectedPt);
+           console.log("植物切换成功:", selectedPt);
+        } else {
+         console.error("植物没找到");
+         }
+      } else {
+       console.error("找不到 plant-bar 元素");
+      };
+      console.log('plantBar classes:',plantDiv.classList);
+      };
+      document.getElementById('backpack').addEventListener('click',function() {
+      document.getElementById('backpack-container').style.display = 'block';
+    });
+      document.getElementById('close-button').addEventListener('click', function () {
+      document.getElementById('backpack-container').style.display = 'none';
+    });
+    
+    </script>
+    <div id="information-input-bar">
+      <img src="../img/数据导入背景图.jpg" alt="生态有你，更好" style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; object-fit: cover; z-index: -1; border-radius: 5%;">
+      <button style="float:left; width:70px; margin:10px; margin-left:30px; border:1.5px dashed black; border-radius: 15%; padding:7px; background: linear-gradient(135deg, #4ae072, #00c2a8); font-weight: bold; font-size: larger;">今日足迹</button>
+      <button id="input-data" style="float:left; width:auto; margin:10px; border:1.5px dashed black; border-radius: 15%; padding:5px; font-weight: bold; font-size: medium; font-family: 宋体;">导入</button>
+      <button style="float:left; width:50px; margin:10px; border:1.5px solid rgb(249, 60, 27); border-radius: 15%; padding:5px; text-align: center; background: linear-gradient(180deg, #eaeaea, #f80000, #eaeaea); font-weight: bold; font-family: 宋体; font-size: medium;">日历</button>
+      <div style="clear: both;"></div>
+      <div class="stats-div">总里程(步行/跑步): <div class="data-input" id="total-distance">0</div> KM</div>
+      <div class="stats-div">捡垃圾数(拍照上传): <div class="data-input" id="trash-count">0</div> 个</div>
+      <div class="convert-div">
+        <span>可转化守护积分：<span id="convert-points">0</span></span>
+        <button id="convert-success-btn" style="background-color: lightblue; border-radius: 5px; padding: 5px;">一键转化至背包</button>
+      </div>
+    </div>
+    
+    <!-- 输入窗口 -->
+    <div class="input-popup" id="input-popup">
+      <label for="input-distance">今日里程：</label>
+      <input type="number" id="input-distance" placeholder="输入里程数">
+      <label for="input-trash">捡垃圾数：</label>
+      <input type="number" id="input-trash" placeholder="输入捡垃圾数">
+      <button id="confirm-data-btn">确定</button>
+      <button id="cancel-data-btn">取消</button>
+    </div>
+  </div>
+  <script>
+    // 定义背包变量
+    let Ecoverse = {};
+  
+    // 打开输入窗口
+    document.getElementById('input-data').addEventListener('click', function () {
+      document.getElementById('input-popup').style.display = 'block';
+    });
+  
+    // 确定按钮逻辑
+    document.getElementById('confirm-data-btn').addEventListener('click', function () {
+      const distance = parseFloat(document.getElementById('input-distance').value) || 0;
+      const trash = parseFloat(document.getElementById('input-trash').value) || 0;
+  
+      // 更新里程和捡垃圾数
+      document.getElementById('total-distance').textContent = distance.toFixed(2);
+      document.getElementById('trash-count').textContent = trash;
+  
+      // 计算可转化积分
+      const points = (distance * 0.5 + trash * 0.5).toFixed(2);
+      document.getElementById('convert-points').textContent = points;
+  
+      // 关闭窗口
+      document.getElementById('input-popup').style.display = 'none';
+    });
+  
+    // 取消按钮逻辑
+    document.getElementById('cancel-data-btn').addEventListener('click', function () {
+      document.getElementById('input-popup').style.display = 'none';
+    });
+  
+    // 转化至背包逻辑
+    document.getElementById('convert-success-btn').addEventListener('click', function () {
+      const points = parseFloat(document.getElementById('convert-points').textContent);
+      Ecoverse.points = points;
+  
+      alert(`成功转化 ${points} 积分至背包！`);
+      console.log('Ecoverse:', Ecoverse);
+    });
+  </script>
+  <script>
+    document.getElementById('change-bg-btn').addEventListener('click',() => {
+      console.log('加载成功了');
+      window.location.href='背景选择.html';
+    });
+    document.getElementById('change-pt-btn').addEventListener('click',() => {
+      console.log('加载成功了');
+      window.location.href='植物图鉴.html';
+    });
+  </script>
+  <div
+    style="width: 25%; min-width: 200px; max-width: 300px; display: flex; flex-direction: column; align-items: center;">
+    <div id="user-info-container">
+      <div class="avatar"></div>
+      <div class="username">用户名</div>
+      <button class="logout">退出登录</button>
+    </div>
+    <div id="right-div">
+      <button id="summon-btn" style="margin-top:20px; width:110px;">召唤/收起小助手</button>
+        <div id="assistant" class="hidden draggable">
+          <video id="character-video" src="../img/出场动画.mp4" muted class="hidden"></video>
+          <video id="hover-video" src="../img/显示动画.mp4" muted class="hidden"></video>
+          <img id="character" src="../img/AI助手.jpg" alt="小助手">
+        </div>
+        <div id="dialog" class="hidden" style="position:fixed;bottom:350px;right:10px;">
+          <button id="close-btn" style="border:1px solid black; background-color:red; padding:0; position: absolute; bottom:35px;left:367px; font-weight: bold;">X</button>
+          <textarea id="user-input" placeholder="请输入内容..."></textarea>
+          <button id="send-btn" style="position: absolute; top:32px;">发送</button>
+          <div id="response"></div>
+        </div>
+    </div>
+  </div>
+  </div>
+  <script>
+    function navigateTo(page) {
+      window.location.href = page;
+    }
+  </script>
+</body>
+<script src="../js/base.js"></script>
+</html>

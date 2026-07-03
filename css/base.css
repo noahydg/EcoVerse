@@ -1,0 +1,242 @@
+
+ 
+ /* 加载小蝴蝶 */
+ .lodding-wrap{
+   position: fixed;
+   left: 0px;
+   right: 0px;
+   bottom: 0px;
+   top: 0px;
+   background-color: rgba(0, 0, 0, 0.95);
+   z-index: 9;
+   opacity: 1;
+ }
+ 
+ .loadding-div{
+   left: 50%;
+   top: 50%;
+   position: relative;
+   width: 100px;
+   height: 100px;
+   transform: rotateZ(-13deg) translate(-50%,-50%); 
+   animation: insect-fly 0.3333333333s infinite alternate cubic-bezier(.45,-0.43,.63,1.94);
+ }
+ 
+ .loadding-div::after,.loadding-div::before{
+   content: '';
+   position: absolute;
+   width: 50px;
+   height: 50px;
+   border: 1px solid #00c7ff;
+   transform: rotateX(60deg) rotateY(-60deg);
+   /* background-color: rgba(21, 101, 67); 
+   background-color: rgba(0, 87, 55); */
+   background-color:rgba(0, 128, 96);
+   border-radius: 40% 20% 50% 50%;
+   animation: wings 0.333s infinite cubic-bezier(0.6, 0, 0.4, 1) alternate;
+ }
+ .loadding-div::after{
+   transform-origin: right center;
+   left: 0;
+ }
+ 
+ .loadding-div::before{
+   right: 0;
+   transform-origin: left center;
+   animation-direction: alternate-reverse;
+ }
+ 
+ @keyframes insect-fly {
+   from {
+     margin-top: -0.3em;
+   }
+   to {
+     margin-top: 0.3em;
+   }
+ }
+ @keyframes wings {
+   from{
+     transform: rotateX(60deg) rotateY(-60deg);
+   }
+   to{
+     transform: rotateX(60deg) rotateY(60deg);
+   }
+ }
+
+/* AI小助手 */
+body {
+  font-family: 宋体;
+  text-align: center;
+  margin: 20px;
+}
+
+#summon-btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #00c7ff;
+  transition: transform .3s ease;
+}
+#summon-btn:hover{
+  transform: scale(1.1);
+}
+
+#assistant {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  z-index: 1000;
+  cursor: grab;
+  width: 200px;
+  height: 200px;
+  transform: scale(0); 
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease; 
+}
+
+#assistant img,
+#assistant video {
+  width: 100px;
+  height: 100px;
+  z-index: 1001;
+}
+
+.hidden {
+  display: none;
+}
+/* AI鼠标悬浮效果（实际播放新的gif） */
+#assistant img:hover {
+  transform: scale(1.1); 
+  transition: transform 0.3s ease;
+}
+
+#assistant.show {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* 对话框 */
+#dialog {
+  position:absolute;
+  bottom:100px;
+  right:200px;
+  width:500px;
+  height:50px;
+  z-index: 1001;
+}
+
+#user-input {
+  width: 50%;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+#send-btn {
+  padding: 5px 15px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#response {
+  margin-top: 5px;
+  color: rgb(8, 8, 8);
+  font-family: 宋体;
+  font-weight: bold;
+}
+
+#close-btn {
+  cursor: pointer;
+}
+.sqr1{
+  border:0.5px solid grey;
+  border-radius: 15%;
+  width:70px;
+  height:auto;
+  padding:5px;
+}
+
+ /* 背包容器样式 */
+.backpack-container {
+  width: 300px;
+  height: 500px;
+  background-color: #d3d3d3; /* 偏灰的背景色 */
+  border: 1px solid #aaa;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  display: none;
+  overflow: scroll;
+  z-index: 1000;
+  left:100px;
+}
+
+/* 关闭按钮样式 */
+.close-button {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background: grey;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+/* 背包内容布局 */
+.backpack-content {
+  display: flex;
+  height: 100%;
+  position:relative;
+}
+
+/* 左侧背包区样式 */
+.backpack-grid {
+  width: 70%; /* 比右边稍宽 */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px; /* 方格之间的间距 */
+  overflow-y: auto; /* 允许滚动 */
+  background-color: #56a366; /* 和整体背景有层次感 */
+  padding: 5px;
+  overflow-y: scroll;
+}
+
+/* 方格样式 */
+.item {
+  width: 50px;
+  height: 50px;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #8b8b8b;
+  transition: transform .3s ease;
+}
+.item:hover{
+    transform: scale(1.08);
+}
+
+/* 右侧介绍区样式 */
+.item-info {
+  width: 40%; /* 比左边稍窄 */
+  padding: 5px;
+  background-color: #e0e0e0; /* 与左侧区分 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* 物品图片 */
+.item-preview {
+  width: 80%;
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+
+/* 物品描述 */
+.item-description {
+  font-size: 12px;
+  text-align: center;
+  margin-top: 10px;
+}

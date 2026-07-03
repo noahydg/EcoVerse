@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>植物图鉴</title>
+  <link rel="stylesheet" href="background.css">
+</head>
+<style>
+    .card {
+      width: calc(25% - 10px);
+      border-radius: 15px;
+      overflow: hidden;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      transition: transform .3s ease;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      width: 100%;
+    }
+    .section {
+        width: 50%;
+        margin: 20px 0;
+        padding: 15px;
+        border-radius: 15px;
+         background-color: #f5f5f5;
+           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    #discovery-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        min-width: 300px;
+        margin-top: 20px;
+    }
+    .card img {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+            .top-title-container {
+            position: sticky;
+            top: 0; /* 固定在距离顶部0px的位置 */
+            width: 100%;
+            background-color: #fff; /* 可选：设置背景色以确保文字清晰可见 */
+            z-index: 1000; /* 确保标题在其他内容之上 */
+            text-align: center; /* 可选：居中显示标题 */
+            padding: 10px 0; /* 可选：添加内边距以增加可读性 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 可选：添加阴影以增加层次感 */
+        }
+    }
+</style>
+<body>
+    <div class="lodding-wrap">
+        <div class="loadding-div"></div>
+      </div>
+
+    <div id="discovery-page">
+        <div class="section">
+        <h3>选择你喜欢的专属植物</h3>
+            <div class="card-container">
+              <div class="card">
+                  <img src="../img/植物图鉴/碳碳树.png" alt="碳碳树">
+                  <button class="plant-option" data-bt="default-pt">碳碳树 使用</button>
+              </div>
+              <div class="card">
+                  <img src="../img/植物图鉴/桃花树.png" alt="桃花树">
+                  <button class="plant-option" data-pt="pt1">桃花树 使用</button>
+              </div>
+              <div class="card">
+                  <img src="../img/植物图鉴/盆栽树1.png" alt="盆栽树">
+                  <button class="plant-option" data-pt="pt2">盆栽树 使用</button>
+              </div>
+              <div class="card">
+                  <img src="../img/植物图鉴/碳碳树3级1.png" alt="碳碳树3级">
+                  <button class="plant-option" data-pt="pt3">碳碳树3级 使用</button>
+              </div>
+              <div class="card">
+                <img src="../img/植物图鉴/黑树1.png" alt="黑树">
+                <button class="plant-option" data-pt="pt4">黑树 使用</button>
+            </div>
+            </div>
+        </div>
+    </div>
+  <!-- 背景选择器 -->
+   
+
+  <script>
+    // 选择背景时将数据存储到 localStorage，并跳回主页面
+    document.querySelectorAll('.plant-option').forEach(option => {
+      option.addEventListener('click', () => {
+        const pt = option.dataset.pt;
+        localStorage.setItem('selectedPlant', pt); // 存储背景信息
+        window.location.href = "../html/生态.html"; // 返回主页面
+      });
+    });
+
+    // 取消按钮返回主页面
+    document.getElementById('cancel-btn').addEventListener('click', () => {
+      window.location.href = "../html/生态.html";
+    });
+  </script>
+</body>
+</html>

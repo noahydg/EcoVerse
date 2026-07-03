@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>背景选择</title>
+  <link rel="stylesheet" href="../css/background.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <script src="../js/jq.js"></script>
+</head>
+<style>
+    .card {
+      width: calc(25% - 10px);
+      border-radius: 15px;
+      overflow: hidden;
+      background-color: white;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      transition: transform .3s ease;
+    }
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      width: 100%;
+    }
+    .section {
+        width: 50%;
+        margin: 20px 0;
+        padding: 15px;
+        border-radius: 15px;
+         background-color: #f5f5f5;
+           box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+    #discovery-page {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        min-width: 300px;
+        margin-top: 20px;
+    }
+    .card img {
+        width: 100%;
+        height: 100px;
+        object-fit: cover;
+    }
+
+    .card:hover {
+        transform: scale(1.05);
+            .top-title-container {
+            position: sticky;
+            top: 0; /* 固定在距离顶部0px的位置 */
+            width: 100%;
+            background-color: #fff; /* 可选：设置背景色以确保文字清晰可见 */
+            z-index: 1000; /* 确保标题在其他内容之上 */
+            text-align: center; /* 可选：居中显示标题 */
+            padding: 10px 0; /* 可选：添加内边距以增加可读性 */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 可选：添加阴影以增加层次感 */
+        }
+    }
+</style>
+<body>
+    <div class="lodding-wrap">
+        <div class="loadding-div"></div>
+      </div>
+    <div id="discovery-page">
+        <div class="section">
+        <h3>春天</h3>
+            <div class="card-container">
+              <div class="card">
+                  <img src="../img/背景选择/草原.png" alt="草原">
+                  <button class="background-option" data-bg="default">草原 使用</button>
+              </div>
+              <div class="card">
+                  <img src="../img/背景选择/公园.jpg" alt="公园">
+                  <button class="background-option" data-bg="bg1">公园 使用</button>
+              </div>
+              <div class="card">
+                  <img src="../img/背景选择/佛系生活.jpg" alt="佛系生活">
+                  <button class="background-option" data-bg="bg2">佛系生活 使用</button>
+              </div>
+              <div class="card">
+                  <img src="../img/背景大图2.jpg" alt="山水">
+                  <button class="background-option" data-bg="bg3">山水 使用</button>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="discovery-page">
+        <div class="section">
+        <h3>夏天</h3>
+            <div class="card-container">
+              <div class="card">
+                  <img src="../img/背景选择/海滩.jpg" alt="海滩">
+                  <button class="background-option" data-bg="bg4">海滩 使用</button>
+              </div>
+              <div class="card">
+                  <img src="../img/背景选择/丁达尔.jpg" alt="丁达尔">
+                  <button class="background-option" data-bg="bg5">丁达尔 使用</button>
+              </div>
+              <div class="card">
+                  <img src="#" alt="更多">
+                  <button class="background-option">暂无</button>
+              </div>
+              <div class="card">
+                  <img src="#" alt="更多">
+                  <button class="background-option">暂无</button>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="discovery-page">
+        <div class="section">
+        <h3>秋天</h3>
+            <div class="card-container">
+              <div class="card">
+                  <img src="../img/背景选择/麦田.jpg" alt="麦田">
+                  <button class="background-option" data-bg="bg6">麦田 使用</button>
+              </div>
+              <div class="card">
+                  <img src="../img/背景选择/公路.jpg" alt="公路">
+                  <button class="background-option" data-bg="bg7">公路 使用</button>
+              </div>
+              <div class="card">
+                  <img src="../img/背景选择/卡通山.jpg" alt="卡通">
+                  <button class="background-option" data-bg="bg8">卡通 使用</button>
+              </div>
+              <div class="card">
+                  <img src="../img/背景选择/余晖.png" alt="余晖">
+                  <button class="background-option">余晖 使用</button>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div id="discovery-page">
+        <div class="section">
+        <h3>冬天</h3>
+            <div class="card-container">
+              <div class="card">
+                  <img src="../img/背景选择/雪地.jpg" alt="雪地">
+                  <button class="background-option" data-bg="bg9">雪地 使用</button>
+              </div>
+              <div class="card">
+                  <img src="../img/背景选择/雪山飞狐.jpg" alt="雪山">
+                  <button class="background-option">雪山 使用</button>
+              </div>
+              <div class="card">
+                  <img src="#" alt="更多">
+                  <button class="background-option">暂无</button>
+              </div>
+              <div class="card">
+                  <img src="#" alt="更多">
+                  <button class="background-option">暂无</button>
+              </div>
+            </div>
+        </div>
+    </div>
+   <button id="cancel-btn">返回</button>
+  <script>
+    // 选择背景时将数据存储到 localStorage，并跳回主页面
+    document.querySelectorAll('.background-option').forEach(option => {
+      option.addEventListener('click', () => {
+        const bg = option.dataset.bg;
+        localStorage.setItem('selectedBackground',bg); // 存储背景信息
+        console.log('zhixingchenggong');
+        window.location.href = "../html/生态.html"; // 返回主页面
+      });
+    });
+
+    // 取消按钮返回主页面
+    document.getElementById('cancel-btn').addEventListener('click', () => {
+      window.location.href = "../html/生态.html";
+    });
+  </script>
+</body>
+<script src="../js/base.js"></script>
+</html>
